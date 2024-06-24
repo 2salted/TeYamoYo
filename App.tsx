@@ -3,7 +3,7 @@ import {
   FlatList,
   Image,
   StyleSheet,
-  Text,
+  TouchableOpacity,
   View,
 } from "react-native";
 import { users } from "./localJSON";
@@ -27,10 +27,9 @@ export default function Main(): React.JSX.Element {
         data={users}
         renderItem={({ item }: { item: Users }) => (
           <View className="w-1/2 items-center justify-center">
-            <Image source={item.pfp} style={styles.image} />
-            <Text>
-              {item.firstName} {item.lastName}
-            </Text>
+            <TouchableOpacity style={styles.image}>
+              <Image source={item.pfp} style={styles.image} />
+            </TouchableOpacity>
           </View>
         )}
         keyExtractor={(item: Users) => item.id}
@@ -41,20 +40,8 @@ export default function Main(): React.JSX.Element {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "white",
-  },
-  item: {
-    backgroundColor: "#f0f0f0",
-    padding: 10,
-    margin: 10,
-    alignItems: "center",
-    justifyContent: "center",
-  },
   image: {
     width: "100%",
-    height: width / 2,
-    marginBottom: 10,
+    height: width / 1.37,
   },
 });
